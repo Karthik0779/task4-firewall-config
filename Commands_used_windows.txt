@@ -1,0 +1,10 @@
+# Commands Used – Windows Firewall
+
+wf.msc  (Run to open Windows Firewall)
+Get-NetFirewallRule | Where-Object {$_.Name -like "*Telnet*"}  (PowerShell)
+
+Steps used:
+- Created rule to block port 23 (Telnet)
+- Used Telnet to test
+- Allowed port 22 (SSH)
+- Deleted the Telnet block rule

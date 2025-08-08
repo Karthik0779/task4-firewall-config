@@ -1,0 +1,24 @@
+# Windows Firewall Report – Task 4
+
+I used Windows Defender Firewall with Advanced Settings to manage traffic rules.
+
+1. Opened firewall via:
+   Run → wf.msc
+
+2. Viewed Inbound Rules.
+
+3. Created a new rule:
+   - Port: TCP 23 (Telnet)
+   - Action: Block the connection
+   - Profile: All
+   - Name: Block Telnet
+
+4. Tested using:
+   telnet localhost 23
+   → Connection refused (success)
+
+5. Created allow rule for port 22 (SSH)
+
+6. Deleted Telnet block rule after test
+
+This helped me understand rule-based control of network access and GUI-based firewall management in Windows.

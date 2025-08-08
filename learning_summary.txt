@@ -1,0 +1,30 @@
+# Learning Summary – Task 4
+## Windows Firewall & Linux UFW Firewall Configuration
+
+I performed firewall configuration tasks on both Windows and Kali Linux. This helped me understand how to control traffic and protect systems by managing port rules.
+
+---
+
+## Windows Firewall
+- Blocked port 23 (Telnet) using GUI
+- Tested using Telnet client
+- Allowed port 22 (SSH)
+- Deleted test rule to restore firewall
+
+## Kali Linux (UFW)
+- Installed and enabled UFW
+- Denied port 23 (Telnet)
+- Tested using telnet command
+- Allowed port 22 (SSH)
+- Removed the Telnet rule
+
+---
+
+## Key Skills Learned
+- Using GUI and CLI to manage firewall
+- Importance of blocking insecure ports (Telnet)
+- How to safely configure port-based rules
+- Testing rule effectiveness using Telnet
+- Understanding of inbound/outbound filtering
+
+This task gave me hands-on experience with practical firewall management on both OS environments.

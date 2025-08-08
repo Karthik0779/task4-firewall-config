@@ -1,0 +1,31 @@
+# Linux Firewall Report – Task 4 (Kali Linux)
+
+I used UFW to configure firewall rules in Kali Linux.
+
+1. Installed UFW:
+    sudo apt update
+    sudo apt install ufw -y
+
+2. Enabled firewall:
+    sudo ufw enable
+
+3. Checked existing rules:
+    sudo ufw status numbered
+
+4. Blocked port 23 (Telnet):
+    sudo ufw deny 23
+
+5. Installed Telnet and tested:
+    sudo apt install telnet
+    telnet localhost 23
+
+6. Allowed port 22 (SSH):
+    sudo ufw allow 22
+
+7. Deleted port 23 rule:
+    sudo ufw delete deny 23
+
+8. Verified only port 22 allowed:
+    sudo ufw status numbered
+
+This taught me how to securely manage services, test blocked ports, and maintain control over Linux system access.
