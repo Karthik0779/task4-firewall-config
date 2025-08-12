@@ -1,106 +1,51 @@
+Configure and test basic firewall rules to allow or block traffic on specific ports.
+🖥 Option 1: Windows Firewall
+1️⃣ Open Firewall Settings
+Press Windows + R
+Type: control firewall.cpl
+Press Enter.
+2️⃣ View Current Rules
+Click Advanced settings on the left panel.
+This opens Windows Defender Firewall with Advanced Security.
+In the left panel, click Inbound Rules to view existing rules.
+3️⃣ Block Inbound Traffic on Port 23 (Telnet)
+In Inbound Rules, click New Rule (on right panel).
+Select Port → TCP → Specific local ports: 23 → Block the connection.
+Choose all profiles (Domain, Private, Public).
+Name it Block Telnet Port 23.
+4️⃣ Test the Rule
+Open Command Prompt.
+Run: telnet localhost 23 (If Telnet client isn’t installed, you can enable it via “Turn Windows features on or off.”)
+It should fail to connect.
+5️⃣ Remove the Test Rule
+Go back to Inbound Rules.
+Right-click the Block Telnet Port 23 rule and Delete.
+🖥 Option 2: Linux (UFW – Uncomplicated Firewall)
+1️⃣ Check Firewall Status
+sudo ufw status
 
+2️⃣ Enable UFW (if disabled)
+sudo ufw enable
 
-# 🔥 Firewall Configuration Guide (Windows & Linux) 🔥
+3️⃣ Block Port 23 (Telnet)
+sudo ufw deny 23/tcp
 
-A simple guide to configuring firewalls on Windows and Linux systems to help secure your network by controlling inbound and outbound traffic.
+4️⃣ Allow SSH (Port 22)
+sudo ufw allow 22/tcp
 
----
+5️⃣ Check Rules
+sudo ufw status numbered
 
-## 📋 Project Overview
+6️⃣ Test the Rule
+Try: telnet localhost 23
+It should fail to connect.
+7️⃣ Remove the Rule
+sudo ufw delete deny 23/tcp
 
-This repository contains instructions and commands to configure firewalls on Windows and Linux machines. It covers the built-in Windows Defender Firewall and popular Linux firewall tools such as iptables and firewalld.
-
----
-
-## ⚙️ Installation & Setup
-
-There’s no installation required for this guide itself, but ensure you have:
-
-- Windows 10/11 or later with administrative rights.
-- A Linux distribution with **iptables**, **firewalld**, or **ufw** installed.
-- Access to terminal or PowerShell with admin privileges.
-
----
-
-## 🔧 Firewall Configuration (Windows & Linux)
-
-### 🪟 Windows Firewall Configuration
-
-- **Access:**  
-  Open **Windows Defender Firewall** via Control Panel or search in the Start menu.
-
-- **Common tasks:**  
-  - ✅ Enable or disable firewall  
-  - 🚫 Allow/block apps and features  
-  - 🔐 Create inbound/outbound rules
-
-- **Creating a new firewall rule:**  
-  1. Open **Windows Defender Firewall with Advanced Security**  
-  2. Select **Inbound Rules** or **Outbound Rules**  
-  3. Click **New Rule**  
-  4. Choose rule type: Program, Port, Predefined, or Custom  
-  5. Specify program path or port number  
-  6. Select action: **Allow** or **Block**  
-  7. Apply to profiles: Domain, Private, Public  
-  8. Name the rule and finish
-
-- **PowerShell example to allow HTTP (port 80):**  
-  ```powershell
-  New-NetFirewallRule -DisplayName "Allow HTTP" -Direction Inbound -Protocol TCP -LocalPort 80 -Action Allow
-
-
----
-
-🐧 Linux Firewall Configuration
-
-Common firewall tools include iptables, firewalld (CentOS/RHEL/Fedora), and ufw (Ubuntu/Debian).
-
-Using iptables
-
-View current rules:
-
-sudo iptables -L -v -n
-
-Allow SSH (port 22):
-
-sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-
-Drop all incoming traffic by default:
-
-sudo iptables -P INPUT DROP
-
-Save rules:
-
-sudo iptables-save > /etc/iptables/rules.v4
-
-
-Using firewalld (CentOS/RHEL/Fedora)
-
-Check firewall status:
-
-sudo firewall-cmd --state
-
-Allow port 80/tcp permanently:
-
-sudo firewall-cmd --permanent --add-port=80/tcp
-sudo firewall-cmd --reload
-
-List allowed ports and services:
-
-sudo firewall-cmd --list-all
-
-
-
----
-
-🤝 Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests for improvements, additional examples, or support for other firewall tools.
-
-
----
-
-📄 License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
+The outcome of this
+View and interpret current firewall rules.
+Add inbound and outbound rules to allow or block specific ports/services.
+Test firewall behavior to confirm it is blocking or allowing traffic as intended.
+Safely remove or revert rules to restore the system’s original state.
+Understand how a firewall acts as a security barrier between your device and potential threats.
+In short — by completing this task, you’ll know how to configure, test, and manage firewall rules on both Windows and Linux.
